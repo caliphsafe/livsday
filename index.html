@@ -6,26 +6,21 @@
   <title>Liv’s Valentine’s Day Schedule</title>
   <meta name="description" content="Liv’s Valentine’s Day schedule." />
 
-  <!-- Clean + modern -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      /* Background */
       --bg0:#fff0f5;
       --bg1:#ffe3ed;
-      --paper:#ffffff;
 
-      /* Text (deep pink/reds) */
-      --ink:#4a0823;      /* deep berry */
-      --ink2:#7a0c34;     /* dark rose */
+      --ink:#4a0823;
+      --ink2:#7a0c34;
       --muted: rgba(74,8,35,.70);
 
-      /* Accents */
-      --accent:#b10f3a;   /* rich red-pink */
-      --accent2:#e11d48;  /* ruby */
+      --accent:#b10f3a;
+      --accent2:#e11d48;
       --line: rgba(74,8,35,.12);
 
       --r: 22px;
@@ -54,9 +49,10 @@
       max-width: 720px;
       margin: 0 auto;
       padding: calc(18px + var(--safeTop)) 16px calc(22px + var(--safeBottom));
+      text-align:center;
     }
 
-    /* Header: simple, centered, premium */
+    /* Header */
     .top{
       display:flex;
       flex-direction:column;
@@ -76,17 +72,24 @@
     }
 
     .date-chip{
-      display:inline-flex;
+      display:flex;
+      flex-direction:column;
       align-items:center;
-      gap:10px;
-      padding: 10px 12px;
+      gap: 6px;
+      padding: 10px 14px 12px;
       border-radius: 999px;
       background: rgba(255,255,255,.72);
       border: 1px solid rgba(74,8,35,.12);
       color: var(--ink2);
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .2px;
       font-size: 12.5px;
+      line-height: 1.1;
+    }
+    .date-chip .line1{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
     }
     .date-chip .spark{
       width: 9px; height: 9px;
@@ -94,8 +97,14 @@
       background: linear-gradient(180deg, var(--accent2), var(--accent));
       box-shadow: 0 8px 18px rgba(225,29,72,.20);
     }
+    .date-chip .helper{
+      font-weight: 700;
+      letter-spacing: .01em;
+      font-size: 12px;
+      color: rgba(74,8,35,.70);
+    }
 
-    /* Layout section */
+    /* Section */
     .section{
       margin-top: 16px;
       padding: 14px;
@@ -105,99 +114,55 @@
     }
 
     .section h2{
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       font-size: 14px;
       letter-spacing: .18em;
       text-transform: uppercase;
       color: var(--ink2);
     }
 
-    /* NEW APPROACH: compact “itinerary list” with time rail + tap-expand */
-    .itinerary{
+    /* NEW: simple list (no dropdowns) */
+    .list{
       display:flex;
       flex-direction:column;
       gap: 10px;
     }
 
-    details.item{
+    .item{
       border-radius: var(--r2);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.78);
-      overflow:hidden;
+      background: rgba(255,255,255,.80);
+      padding: 12px;
+      text-align:center;
     }
 
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding: 12px 12px;
-      display:grid;
-      grid-template-columns: 84px 1fr 18px;
-      gap: 10px;
-      align-items:center;
-      user-select:none;
-    }
-    summary::-webkit-details-marker{ display:none; }
-
-    .t{
-      font-weight: 800;
+    .time{
+      font-weight: 900;
       color: var(--accent);
       letter-spacing: .2px;
       font-size: 12.5px;
+      margin-bottom: 6px;
     }
 
     .name{
-      font-weight: 800;
+      font-weight: 900;
       color: var(--ink);
       line-height: 1.15;
       font-size: 15px;
+      margin: 0;
     }
 
-    .chev{
-      width: 18px; height: 18px;
-      display:grid;
-      place-items:center;
-      color: rgba(74,8,35,.55);
-      transition: transform .22s ease;
-    }
-    details[open] .chev{ transform: rotate(180deg); }
-
-    .body{
-      padding: 0 12px 12px;
-      border-top: 1px solid rgba(74,8,35,.08);
-      display:grid;
-      gap: 10px;
-    }
-
-    .meta{
-      display:grid;
-      gap: 8px;
-      padding-top: 10px;
-    }
-
-    .row{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      font-size: 13px;
-      color: rgba(74,8,35,.80);
-      line-height: 1.35;
-    }
-    .label{
-      flex: 0 0 auto;
-      font-weight: 800;
-      color: var(--ink2);
-      letter-spacing: .2px;
-    }
-
-    /* Optional mini “vibe” line per item */
-    .vibe{
+    .addr{
+      display:inline-block;
+      margin-top: 6px;
       font-size: 12.5px;
+      font-weight: 700;
       color: rgba(74,8,35,.72);
-      padding: 9px 10px;
-      border-radius: 14px;
-      background: rgba(225,29,72,.06);
-      border: 1px solid rgba(225,29,72,.10);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      line-height: 1.25;
     }
+    .addr:active{ opacity:.75; }
 
     /* Footer note */
     .note{
@@ -222,151 +187,92 @@
       line-height: 1.55;
     }
 
-    /* Subtle touch feedback */
-    summary:active{
-      background: rgba(225,29,72,.06);
-    }
-
-    /* Mobile polish */
     @media (max-width: 420px){
-      summary{ grid-template-columns: 78px 1fr 18px; }
       .name{ font-size: 14.8px; }
-      .t{ font-size: 12.2px; }
+      .time{ font-size: 12.2px; }
     }
-
-    @media (prefers-reduced-motion: reduce){
-      .chev{ transition:none; }
-    }
-    body,
-.top,
-.section,
-.itinerary,
-summary,
-.body,
-.meta,
-.row,
-.note,
-.section h2,
-.note h3,
-.note p {
-  text-align: center;
-}
-
-/* Center summary grid items nicely */
-summary{
-  grid-template-columns: 1fr;
-  justify-items: center;
-}
-
-/* Remove left/right alignment in rows */
-.row{
-  justify-content: center;
-}
-    .chev{
-  display:none;
-}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header class="top">
-      <!-- Put livsval.png in the same folder as this HTML -->
       <div class="logo">
         <img src="livsval.png" alt="Liv’s Valentine’s Day Schedule" />
       </div>
+
       <div class="date-chip">
-        <span class="spark" aria-hidden="true"></span>
-        Valentine’s Day Itinerary
+        <div class="line1">
+          <span class="spark" aria-hidden="true"></span>
+          <span>Valentine’s Day Itinerary</span>
+        </div>
+        <div class="helper">Tap each item for details.</div>
       </div>
     </header>
 
     <section class="section">
       <h2>Schedule</h2>
 
-      <div class="itinerary" aria-label="Valentine’s Day schedule list">
-        <details class="item" open>
-          <summary>
-            <div class="t">11:30 AM</div>
-            <div class="name">Welcome Home Brunch</div>
-            <div class="chev" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="body">
-            <div class="meta">
-              <div class="row"><span class="label">Location</span> Liv’s Home, New Bedford, MA</div>
-              <div class="vibe">Soft landing, cozy bites, and a slow start 💗</div>
-            </div>
-          </div>
-        </details>
+      <div class="list" aria-label="Valentine’s Day schedule list">
+        <div class="item">
+          <div class="time">11:30 AM</div>
+          <p class="name">Welcome Home Brunch</p>
+          <a class="addr"
+             href="https://www.google.com/maps/search/?api=1&query=Liv%27s%20Home%2C%20New%20Bedford%2C%20MA"
+             target="_blank" rel="noopener">
+            Liv’s Home, New Bedford, MA
+          </a>
+        </div>
 
-        <details class="item">
-          <summary>
-            <div class="t">1:00 PM</div>
-            <div class="name">Relaxing Thai Massage Therapy</div>
-            <div class="chev" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="body">
-            <div class="meta">
-              <div class="row"><span class="label">Location</span> Thai Sraan Wellness, 597 Dartmouth St, South Dartmouth, MA 02748</div>
-              <div class="vibe">Deep reset. Phone on silent. Pure peace. 🌿</div>
-            </div>
-          </div>
-        </details>
+        <div class="item">
+          <div class="time">1:00 PM</div>
+          <p class="name">Relaxing Thai Massage Therapy</p>
+          <a class="addr"
+             href="https://www.google.com/maps/search/?api=1&query=Thai%20Sraan%20Wellness%2C%20597%20Dartmouth%20St%2C%20South%20Dartmouth%2C%20MA%2002748"
+             target="_blank" rel="noopener">
+            Thai Sraan Wellness, 597 Dartmouth St, South Dartmouth, MA 02748
+          </a>
+        </div>
 
-        <details class="item">
-          <summary>
-            <div class="t">3:45 PM</div>
-            <div class="name">Wuthering Heights Movie Matinee</div>
-            <div class="chev" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="body">
-            <div class="meta">
-              <div class="row"><span class="label">Location</span> AMC Dartmouth Mall 11, 140 North Dartmouth Mall, North Dartmouth, MA 02747</div>
-              <div class="vibe">Romance, drama, and the perfect cozy theater moment 🍿</div>
-            </div>
-          </div>
-        </details>
+        <div class="item">
+          <div class="time">3:45 PM</div>
+          <p class="name">Wuthering Heights Movie Matinee</p>
+          <a class="addr"
+             href="https://www.google.com/maps/search/?api=1&query=AMC%20Dartmouth%20Mall%2011%2C%20140%20North%20Dartmouth%20Mall%2C%20North%20Dartmouth%2C%20MA%2002747"
+             target="_blank" rel="noopener">
+            AMC Dartmouth Mall 11, 140 North Dartmouth Mall, North Dartmouth, MA 02747
+          </a>
+        </div>
 
-        <details class="item">
-          <summary>
-            <div class="t">7:30 PM</div>
-            <div class="name">Dinner For 2</div>
-            <div class="chev" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="body">
-            <div class="meta">
-              <div class="row"><span class="label">Location</span> Saffron By The Sea, 110 Middle St, Fairhaven, MA 02719</div>
-              <div class="vibe">Dress cute. Candlelight energy. Main character hour ✨</div>
-            </div>
-          </div>
-        </details>
+        <div class="item">
+          <div class="time">7:30 PM</div>
+          <p class="name">Dinner For 2</p>
+          <a class="addr"
+             href="https://www.google.com/maps/search/?api=1&query=Saffron%20By%20The%20Sea%2C%20110%20Middle%20St%2C%20Fairhaven%2C%20MA%2002719"
+             target="_blank" rel="noopener">
+            Saffron By The Sea, 110 Middle St, Fairhaven, MA 02719
+          </a>
+        </div>
 
-        <details class="item">
-          <summary>
-            <div class="t">After</div>
-            <div class="name">Two Truths &amp; A Shot Drinking Game</div>
-            <div class="chev" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="body">
-            <div class="meta">
-              <div class="row"><span class="label">Location</span> Liv’s Living Room, New Bedford, MA</div>
-              <div class="vibe">Fun, flirty, and just a little competitive 😉</div>
-            </div>
-          </div>
-        </details>
+        <div class="item">
+          <div class="time">After</div>
+          <p class="name">Two Truths &amp; A Shot Drinking Game</p>
+          <a class="addr"
+             href="https://www.google.com/maps/search/?api=1&query=Liv%27s%20Living%20Room%2C%20New%20Bedford%2C%20MA"
+             target="_blank" rel="noopener">
+            Liv’s Living Room, New Bedford, MA
+          </a>
+        </div>
 
-        <details class="item">
-          <summary>
-            <div class="t">10 PM – 2 AM</div>
-            <div class="name">4TheLuv R&amp;B Party</div>
-            <div class="chev" aria-hidden="true">⌄</div>
-          </summary>
-          <div class="body">
-            <div class="meta">
-              <div class="row"><span class="label">Location</span> The Vault Performing Arts Center &amp; Pub, 791 Purchase St, New Bedford, MA 02740</div>
-              <div class="vibe">R&amp;B all night. Glow up and dance it out ❤️‍🔥</div>
-            </div>
-          </div>
-        </details>
+        <div class="item">
+          <div class="time">10:00 PM – 2:00 AM</div>
+          <p class="name">4TheLuv R&amp;B Party</p>
+          <a class="addr"
+             href="https://www.google.com/maps/search/?api=1&query=The%20Vault%20Performing%20Arts%20Center%20%26%20Pub%2C%20791%20Purchase%20St%2C%20New%20Bedford%2C%20MA%2002740"
+             target="_blank" rel="noopener">
+            The Vault Performing Arts Center &amp; Pub, 791 Purchase St, New Bedford, MA 02740
+          </a>
+        </div>
       </div>
     </section>
 
