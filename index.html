@@ -1,0 +1,1597 @@
+
+
+
+You said:
+Create a logo for the top of a valentines day schedule site. The logo should say 
+"Liv's Valentine's Day Schedule" Using the "V" at the end of "Liv" as the V to start the word "Valentine" Make it cool and very beautiful and simple.
+
+ChatGPT said:
+
+Image created
+•
+Liv's Valentine's Day logo design
+Generated image
+Generated imageGenerated image
+
+
+
+Share
+
+You said:
+Ok code a pager that matches this logo and has a light pink background with a schedule for a valentines day. Make this look clean yet really inviting for a girl. Play with whites, pinks and make it a cool experience as a website. Consider that it will be accessed on a mobile site mainly. Code this above logo as livsval.png as its header.
+
+Welcome Home Brunch - Time: 11:30 AM Location: Liv's Home, New Bedford, MA
+
+Relaxing Thai Massage Therapy - Time: 1PM Location: Thai Sraan Wellness, 597 Dartmouth st. South Dartmouth, MA 02748
+
+Wuthering Heights Movie Matinee  - Time: 3:45 Location: AMC Dartmouth Mall 11, 140 North Dartmouth Mall, North Dartmouth, MA 02747
+
+Dinner For 2 - Time: 7:30 PM Location: Saffron By The Sea, 110 Middle St, Fairhaven, MA 02719
+
+Two Truths & A Shot Drinking Game - Location: Liv's Living Room, New Bedford, MA
+
+4TheLuv R&B Party - Time: 10pm - 2am Location: The Vault Performing Arts Center & Pub, 791 Purchase St, New Bedford, MA 02740
+
+Footer: This experience has been curated for the one and only beautiful Livia Fonseca by Abdourahmane Doumbouya to show his appreciation for her and what she means to him.
+
+ChatGPT said:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Liv’s Valentine’s Day Schedule</title>
+  <meta name="description" content="A curated Valentine’s Day schedule for Livia Fonseca." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #ffe6ee;         /* light pink */
+      --bg2:#fff4f7;         /* softer pink */
+      --card:#ffffffcc;      /* glassy white */
+      --ink:#3a2a33;         /* warm dark */
+      --muted: rgba(58,42,51,.70);
+      --stroke: rgba(58,42,51,.12);
+      --shadow: 0 18px 40px rgba(58,42,51,.14);
+      --radius: 18px;
+
+      --pink:#ff4f88;
+      --rose:#ff7aa5;
+      --cream:#fff7fb;
+
+      --safeTop: env(safe-area-inset-top);
+      --safeBottom: env(safe-area-inset-bottom);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, #ffffffaa 0%, transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, #ffffff80 0%, transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, #ffd0df 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, #ffeaf1 100%);
+      overflow-x:hidden;
+    }
+
+    /* Subtle floating hearts */
+    .hearts{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      opacity:.25;
+      filter: blur(.2px);
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      width: 10px; height: 10px;
+      background: linear-gradient(180deg, var(--rose), var(--pink));
+      transform: rotate(45deg);
+      border-radius: 2px;
+      animation: floatUp linear infinite;
+      box-shadow: 0 10px 24px rgba(255,79,136,.18);
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width:10px; height:10px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart:before{ left:-5px; top:0; }
+    .heart:after{ top:-5px; left:0; }
+
+    @keyframes floatUp{
+      0%   { transform: translateY(12vh) rotate(45deg) scale(.9); opacity:0; }
+      10%  { opacity:.9; }
+      100% { transform: translateY(-110vh) rotate(45deg) scale(1.25); opacity:0; }
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: calc(14px + var(--safeTop)) 16px calc(28px + var(--safeBottom));
+    }
+
+    header{
+      position: sticky;
+      top: 0;
+      padding-top: 8px;
+      padding-bottom: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(255,230,238,.92), rgba(255,230,238,.65));
+      border-bottom: 1px solid rgba(58,42,51,.08);
+      z-index: 5;
+    }
+
+    .header-inner{
+      border-radius: 20px;
+      padding: 10px 10px 12px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(58,42,51,.10);
+      box-shadow: 0 10px 26px rgba(58,42,51,.10);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 8px 2px;
+    }
+    .logo img{
+      width: min(560px, 92vw);
+      height: auto;
+      display:block;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 20px rgba(58,42,51,.14));
+    }
+
+    .subtitle{
+      text-align:center;
+      margin: 6px 10px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .pill-row{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin: 10px 6px 0;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(58,42,51,.10);
+      color: rgba(58,42,51,.86);
+      font-size: 13px;
+      line-height: 1;
+      box-shadow: 0 10px 20px rgba(58,42,51,.08);
+      user-select:none;
+    }
+    .pill .dot{
+      width:8px; height:8px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--rose), var(--pink));
+      box-shadow: 0 6px 12px rgba(255,79,136,.22);
+    }
+
+    main{
+      margin-top: 16px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      margin: 16px 2px 10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-family: "Playfair Display", serif;
+      letter-spacing: .2px;
+      font-size: 18px;
+      color: rgba(58,42,51,.92);
+    }
+    .section-title span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .timeline{
+      position:relative;
+      padding-left: 16px;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(255,79,136,.55), rgba(255,79,136,.10));
+      border-radius: 999px;
+    }
+
+    .card{
+      position:relative;
+      padding: 14px 14px 14px 14px;
+      margin: 12px 0;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid rgba(58,42,51,.10);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform .55s ease, opacity .55s ease;
+    }
+    .card.is-visible{
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(220px 160px at 12% 20%, rgba(255,79,136,.18), transparent 65%),
+        radial-gradient(200px 160px at 92% 0%, rgba(255,122,165,.20), transparent 60%),
+        radial-gradient(240px 180px at 70% 110%, rgba(255,255,255,.45), transparent 60%);
+      pointer-events:none;
+    }
+
+    .marker{
+      position:absolute;
+      left: -2px;
+      top: 18px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--rose), var(--pink));
+      box-shadow: 0 10px 20px rgba(255,79,136,.30);
+      border: 2px solid rgba(255,255,255,.90);
+    }
+    .marker:after{
+      content:"";
+      position:absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.72);
+    }
+
+    .card-content{
+      position:relative;
+      padding-left: 8px;
+    }
+
+    .title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 8px;
+    }
+
+    .title h3{
+      margin:0;
+      font-size: 16px;
+      line-height: 1.15;
+      letter-spacing: .1px;
+    }
+
+    .time{
+      flex: 0 0 auto;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(58,42,51,.10);
+      color: rgba(58,42,51,.82);
+      white-space:nowrap;
+    }
+
+    .meta{
+      display:grid;
+      gap:8px;
+      margin-top: 6px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: rgba(58,42,51,.82);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .ico{
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      border-radius: 6px;
+      background: rgba(255,79,136,.12);
+      border: 1px solid rgba(255,79,136,.16);
+      display:grid;
+      place-items:center;
+    }
+    .ico svg{ width: 12px; height: 12px; opacity:.9; }
+
+    .hint{
+      margin: 12px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      text-align:center;
+    }
+
+    footer{
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 14px 14px 16px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(58,42,51,.10);
+      box-shadow: 0 16px 36px rgba(58,42,51,.10);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .footer-title{
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 16px;
+    }
+    .footer-text{
+      margin:0;
+      color: rgba(58,42,51,.78);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Mobile polish */
+    @media (max-width: 420px){
+      .subtitle{ font-size: 12.5px; }
+      .title h3{ font-size: 15.5px; }
+      .time{ font-size: 11.5px; }
+    }
+
+    /* Reduce motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .heart{ display:none; }
+      .card{ transition:none; transform:none; opacity:1; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Decorative floating hearts -->
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="header-inner">
+        <!-- Header Logo (place livsval.png in same folder as this HTML) -->
+        <div class="logo">
+          <img src="livsval.png" alt="Liv’s Valentine’s Day Schedule logo" />
+        </div>
+
+        <div class="subtitle">
+          A sweet, simple timeline for Valentine’s Day 💗
+        </div>
+
+        <div class="pill-row" aria-label="Quick info">
+          <div class="pill"><span class="dot"></span> Cozy • Romantic • Fun</div>
+          <div class="pill"><span class="dot"></span> Mobile-first</div>
+          <div class="pill"><span class="dot"></span> Curated with love</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="section-title">
+        <h2>Today’s Schedule</h2>
+        <span>Tap and scroll ✨</span>
+      </div>
+
+      <div class="timeline" aria-label="Valentine’s Day schedule timeline">
+        <!-- 1 -->
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>Welcome Home Brunch</h3>
+              <div class="time">11:30 AM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21s-7-4.6-9.5-9.1C.4 8 .9 5.7 2.7 4.3c1.8-1.4 4.4-1 6 1 1.6-2 4.2-2.4 6-1C16.5 5.7 17 8 21.5 11.9 19 16.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Liv’s Home, New Bedford, MA</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>Relaxing Thai Massage Therapy</h3>
+              <div class="time">1:00 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 12c2.5-2.5 7.5-2.5 10 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M4 16c4.5-4.5 11.5-4.5 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M8 7c2-2 6-2 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Thai Sraan Wellness, 597 Dartmouth St, South Dartmouth, MA 02748</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>Wuthering Heights Movie Matinee</h3>
+              <div class="time">3:45 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M8 7v10M16 7v10" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M10 12l4 2.5V9.5L10 12Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> AMC Dartmouth Mall 11, 140 North Dartmouth Mall, North Dartmouth, MA 02747</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>Dinner For 2</h3>
+              <div class="time">7:30 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 3v8M12 3v8M16 3v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M7 11h10v10H7z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Saffron By The Sea, 110 Middle St, Fairhaven, MA 02719</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>Two Truths &amp; A Shot Drinking Game</h3>
+              <div class="time">After Dinner</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 3h8l-1 10H9L8 3Z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M9 13h6v8H9z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Liv’s Living Room, New Bedford, MA</div>
+              </div>
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 12l4 4 8-9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Note:</strong> Keep it playful — and keep the vibes sweet 💞</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>4TheLuv R&amp;B Party</h3>
+              <div class="time">10:00 PM – 2:00 AM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3v10a3 3 0 1 1-2-2.83V5h8v4h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> The Vault Performing Arts Center &amp; Pub, 791 Purchase St, New Bedford, MA 02740</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <p class="hint">Tip: Screenshot this page so you can pull it up instantly later 📸</p>
+      </div>
+
+      <footer>
+        <div class="footer-title">A note for Liv 💌</div>
+        <p class="footer-text">
+          This experience has been curated for the one and only beautiful Livia Fonseca by Abdourahmane Doumbouya
+          to show his appreciation for her and what she means to him.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Floating heart particles (light + tasteful)
+    (function hearts(){
+      const root = document.getElementById("hearts");
+      const count = 14; // mobile-friendly
+      for(let i=0;i<count;i++){
+        const h = document.createElement("div");
+        h.className = "heart";
+        const left = Math.random() * 100;
+        const size = 7 + Math.random() * 10;
+        const dur = 10 + Math.random() * 10;
+        const delay = -Math.random() * dur;
+
+        h.style.left = left + "vw";
+        h.style.width = size + "px";
+        h.style.height = size + "px";
+        h.style.animationDuration = dur + "s";
+        h.style.animationDelay = delay + "s";
+        h.style.opacity = (0.18 + Math.random() * 0.22).toFixed(2);
+
+        root.appendChild(h);
+      }
+    })();
+
+    // Reveal cards on scroll
+    (function revealCards(){
+      const cards = Array.from(document.querySelectorAll(".card"));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add("is-visible");
+        });
+      }, { threshold: 0.12 });
+
+      cards.forEach(c=>io.observe(c));
+    })();
+  </script>
+</body>
+</html>
+
+You said:
+Remove the pink line to the left of the schedule items, simplify it. I don't like how the schedule items have a drop shadow and remove the 3 descriptions that are at the top that say cozy experience etc...  and use a cooler font for the Today's Schedule. This is to appeal to a woman.
+
+ChatGPT said:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Liv’s Valentine’s Day Schedule</title>
+  <meta name="description" content="A curated Valentine’s Day schedule for Livia Fonseca." />
+
+  <!-- Fonts (cooler headline font for Today's Schedule) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500,650&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #ffe6ee;
+      --bg2:#fff4f7;
+      --card:#ffffffcc;
+      --ink:#3a2a33;
+      --muted: rgba(58,42,51,.70);
+      --stroke: rgba(58,42,51,.14);
+      --radius: 18px;
+
+      --pink:#ff4f88;
+      --rose:#ff7aa5;
+
+      --safeTop: env(safe-area-inset-top);
+      --safeBottom: env(safe-area-inset-bottom);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, #ffffffaa 0%, transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, #ffffff80 0%, transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, #ffd0df 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, #ffeaf1 100%);
+      overflow-x:hidden;
+    }
+
+    /* Subtle floating hearts */
+    .hearts{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      opacity:.22;
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      width: 10px; height: 10px;
+      background: linear-gradient(180deg, var(--rose), var(--pink));
+      transform: rotate(45deg);
+      border-radius: 2px;
+      animation: floatUp linear infinite;
+      filter: blur(.1px);
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width:10px; height:10px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart:before{ left:-5px; top:0; }
+    .heart:after{ top:-5px; left:0; }
+
+    @keyframes floatUp{
+      0%   { transform: translateY(10vh) rotate(45deg) scale(.9); opacity:0; }
+      12%  { opacity:.85; }
+      100% { transform: translateY(-110vh) rotate(45deg) scale(1.2); opacity:0; }
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: calc(14px + var(--safeTop)) 16px calc(28px + var(--safeBottom));
+    }
+
+    header{
+      position: sticky;
+      top: 0;
+      padding-top: 8px;
+      padding-bottom: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(255,230,238,.92), rgba(255,230,238,.62));
+      border-bottom: 1px solid rgba(58,42,51,.08);
+      z-index: 5;
+    }
+
+    .header-inner{
+      border-radius: 20px;
+      padding: 10px 10px 12px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(58,42,51,.10);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 8px 2px;
+    }
+    .logo img{
+      width: min(560px, 92vw);
+      height: auto;
+      display:block;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(58,42,51,.12));
+    }
+
+    .subtitle{
+      text-align:center;
+      margin: 6px 10px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    main{ margin-top: 18px; }
+
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      margin: 16px 2px 10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-family: "Fraunces", serif; /* cooler, editorial vibe */
+      font-size: 20px;
+      letter-spacing: .2px;
+      color: rgba(58,42,51,.92);
+    }
+    .section-title span{
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Removed the left pink line by removing timeline styling */
+    .timeline{
+      padding-left: 0;
+    }
+
+    .card{
+      position:relative;
+      padding: 14px 14px 14px 14px;
+      margin: 12px 0;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      /* removed drop shadow */
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform .55s ease, opacity .55s ease;
+    }
+    .card.is-visible{
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(220px 160px at 12% 20%, rgba(255,79,136,.14), transparent 65%),
+        radial-gradient(200px 160px at 92% 0%, rgba(255,122,165,.14), transparent 60%),
+        radial-gradient(240px 180px at 70% 110%, rgba(255,255,255,.40), transparent 60%);
+      pointer-events:none;
+    }
+
+    /* Simplified: removed timeline marker */
+    .marker{ display:none; }
+
+    .card-content{
+      position:relative;
+      padding-left: 0;
+    }
+
+    .title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 8px;
+    }
+
+    .title h3{
+      margin:0;
+      font-size: 16px;
+      line-height: 1.15;
+      letter-spacing: .1px;
+    }
+
+    .time{
+      flex: 0 0 auto;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(58,42,51,.10);
+      color: rgba(58,42,51,.82);
+      white-space:nowrap;
+    }
+
+    .meta{
+      display:grid;
+      gap:8px;
+      margin-top: 6px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: rgba(58,42,51,.82);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .ico{
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      border-radius: 6px;
+      background: rgba(255,79,136,.10);
+      border: 1px solid rgba(255,79,136,.14);
+      display:grid;
+      place-items:center;
+    }
+    .ico svg{ width: 12px; height: 12px; opacity:.9; }
+
+    .hint{
+      margin: 12px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      text-align:center;
+    }
+
+    footer{
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 14px 14px 16px;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(58,42,51,.10);
+      /* no shadow */
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .footer-title{
+      margin: 0 0 8px;
+      font-family: "Fraunces", serif;
+      font-size: 16px;
+    }
+    .footer-text{
+      margin:0;
+      color: rgba(58,42,51,.78);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 420px){
+      .subtitle{ font-size: 12.5px; }
+      .section-title h2{ font-size: 20px; }
+      .title h3{ font-size: 15.5px; }
+      .time{ font-size: 11.5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .heart{ display:none; }
+      .card{ transition:none; transform:none; opacity:1; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="header-inner">
+        <!-- Header Logo (place livsval.png in same folder as this HTML) -->
+        <div class="logo">
+          <img src="livsval.png" alt="Liv’s Valentine’s Day Schedule logo" />
+        </div>
+
+        <div class="subtitle">
+          A sweet, simple timeline for Valentine’s Day 💗
+        </div>
+
+        <!-- Removed the 3 top description pills -->
+      </div>
+    </header>
+
+    <main>
+      <div class="section-title">
+        <h2>Today’s Schedule</h2>
+        <span>Tap and scroll ✨</span>
+      </div>
+
+      <div class="timeline" aria-label="Valentine’s Day schedule">
+        <article class="card">
+          <div class="marker" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="title">
+              <h3>Welcome Home Brunch</h3>
+              <div class="time">11:30 AM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21s-7-4.6-9.5-9.1C.4 8 .9 5.7 2.7 4.3c1.8-1.4 4.4-1 6 1 1.6-2 4.2-2.4 6-1C16.5 5.7 17 8 21.5 11.9 19 16.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Liv’s Home, New Bedford, MA</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Relaxing Thai Massage Therapy</h3>
+              <div class="time">1:00 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 12c2.5-2.5 7.5-2.5 10 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M4 16c4.5-4.5 11.5-4.5 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M8 7c2-2 6-2 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Thai Sraan Wellness, 597 Dartmouth St, South Dartmouth, MA 02748</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Wuthering Heights Movie Matinee</h3>
+              <div class="time">3:45 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M8 7v10M16 7v10" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M10 12l4 2.5V9.5L10 12Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> AMC Dartmouth Mall 11, 140 North Dartmouth Mall, North Dartmouth, MA 02747</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Dinner For 2</h3>
+              <div class="time">7:30 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 3v8M12 3v8M16 3v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M7 11h10v10H7z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Saffron By The Sea, 110 Middle St, Fairhaven, MA 02719</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Two Truths &amp; A Shot Drinking Game</h3>
+              <div class="time">After Dinner</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 3h8l-1 10H9L8 3Z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M9 13h6v8H9z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Liv’s Living Room, New Bedford, MA</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>4TheLuv R&amp;B Party</h3>
+              <div class="time">10:00 PM – 2:00 AM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3v10a3 3 0 1 1-2-2.83V5h8v4h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> The Vault Performing Arts Center &amp; Pub, 791 Purchase St, New Bedford, MA 02740</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <p class="hint">Tip: Screenshot this page so you can pull it up instantly later 📸</p>
+      </div>
+
+      <footer>
+        <div class="footer-title">A note for Liv 💌</div>
+        <p class="footer-text">
+          This experience has been curated for the one and only beautiful Livia Fonseca by Abdourahmane Doumbouya
+          to show his appreciation for her and what she means to him.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Floating heart particles (light + tasteful)
+    (function hearts(){
+      const root = document.getElementById("hearts");
+      const count = 14;
+      for(let i=0;i<count;i++){
+        const h = document.createElement("div");
+        h.className = "heart";
+        const left = Math.random() * 100;
+        const size = 7 + Math.random() * 10;
+        const dur = 10 + Math.random() * 10;
+        const delay = -Math.random() * dur;
+
+        h.style.left = left + "vw";
+        h.style.width = size + "px";
+        h.style.height = size + "px";
+        h.style.animationDuration = dur + "s";
+        h.style.animationDelay = delay + "s";
+        h.style.opacity = (0.16 + Math.random() * 0.22).toFixed(2);
+
+        root.appendChild(h);
+      }
+    })();
+
+    // Reveal cards on scroll
+    (function revealCards(){
+      const cards = Array.from(document.querySelectorAll(".card"));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add("is-visible");
+        });
+      }, { threshold: 0.12 });
+
+      cards.forEach(c=>io.observe(c));
+    })();
+  </script>
+</body>
+</html>
+
+
+
+You said:
+Use darker pinks and reds as font colors
+
+ChatGPT said:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Liv’s Valentine’s Day Schedule</title>
+  <meta name="description" content="A curated Valentine’s Day schedule for Livia Fonseca." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500,650&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      /* Background */
+      --bg: #ffe1ea;
+      --bg2:#fff1f6;
+
+      /* Typography (darker pinks/reds) */
+      --ink:#5a1030;              /* deep berry */
+      --ink2:#7a0f33;             /* dark rose */
+      --muted: rgba(90,16,48,.72);
+
+      /* Accents */
+      --accent:#b10f3a;           /* rich red-pink */
+      --accent2:#e11d48;          /* ruby */
+      --chipBg: rgba(255,255,255,.68);
+
+      /* Surfaces */
+      --card:#ffffffcc;
+      --stroke: rgba(90,16,48,.16);
+      --radius: 18px;
+
+      --safeTop: env(safe-area-inset-top);
+      --safeBottom: env(safe-area-inset-bottom);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 18% 10%, rgba(255,255,255,.75) 0%, transparent 60%),
+        radial-gradient(900px 600px at 90% 25%, rgba(255,255,255,.60) 0%, transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, rgba(255,170,196,.45) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 55%, #ffe7ef 100%);
+      overflow-x:hidden;
+    }
+
+    /* Subtle floating hearts */
+    .hearts{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      opacity:.20;
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      width: 10px; height: 10px;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      transform: rotate(45deg);
+      border-radius: 2px;
+      animation: floatUp linear infinite;
+      filter: blur(.1px);
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width:10px; height:10px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart:before{ left:-5px; top:0; }
+    .heart:after{ top:-5px; left:0; }
+
+    @keyframes floatUp{
+      0%   { transform: translateY(10vh) rotate(45deg) scale(.9); opacity:0; }
+      12%  { opacity:.85; }
+      100% { transform: translateY(-110vh) rotate(45deg) scale(1.2); opacity:0; }
+    }
+
+    .wrap{
+      position:relative;
+      z-index:1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: calc(14px + var(--safeTop)) 16px calc(28px + var(--safeBottom));
+    }
+
+    header{
+      position: sticky;
+      top: 0;
+      padding-top: 8px;
+      padding-bottom: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(255,225,234,.92), rgba(255,225,234,.62));
+      border-bottom: 1px solid rgba(90,16,48,.10);
+      z-index: 5;
+    }
+
+    .header-inner{
+      border-radius: 20px;
+      padding: 10px 10px 12px;
+      background: rgba(255,255,255,.52);
+      border: 1px solid rgba(90,16,48,.12);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 8px 2px;
+    }
+    .logo img{
+      width: min(560px, 92vw);
+      height: auto;
+      display:block;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(90,16,48,.14));
+    }
+
+    .subtitle{
+      text-align:center;
+      margin: 6px 10px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    main{ margin-top: 18px; }
+
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      margin: 16px 2px 10px;
+    }
+    .section-title h2{
+      margin:0;
+      font-family: "Fraunces", serif;
+      font-size: 20px;
+      letter-spacing: .2px;
+      color: var(--ink2);
+    }
+    .section-title span{
+      font-size: 12px;
+      color: rgba(90,16,48,.68);
+    }
+
+    .timeline{ padding-left: 0; }
+
+    .card{
+      position:relative;
+      padding: 14px;
+      margin: 12px 0;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow:hidden;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform .55s ease, opacity .55s ease;
+    }
+    .card.is-visible{
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(220px 160px at 12% 20%, rgba(225,29,72,.12), transparent 65%),
+        radial-gradient(200px 160px at 92% 0%, rgba(177,15,58,.12), transparent 60%),
+        radial-gradient(240px 180px at 70% 110%, rgba(255,255,255,.40), transparent 60%);
+      pointer-events:none;
+    }
+
+    .card-content{ position:relative; }
+
+    .title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 8px;
+    }
+
+    .title h3{
+      margin:0;
+      font-size: 16px;
+      line-height: 1.15;
+      letter-spacing: .1px;
+      color: var(--ink);
+    }
+
+    .time{
+      flex: 0 0 auto;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--chipBg);
+      border: 1px solid rgba(90,16,48,.14);
+      color: var(--ink2);
+      white-space:nowrap;
+    }
+
+    .meta{
+      display:grid;
+      gap:8px;
+      margin-top: 6px;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: rgba(90,16,48,.84);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .row strong{ color: var(--ink2); }
+
+    .ico{
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      border-radius: 6px;
+      background: rgba(225,29,72,.10);
+      border: 1px solid rgba(225,29,72,.14);
+      display:grid;
+      place-items:center;
+      color: var(--accent);
+    }
+    .ico svg{ width: 12px; height: 12px; opacity:.95; }
+
+    .hint{
+      margin: 12px 2px 0;
+      color: rgba(90,16,48,.66);
+      font-size: 12px;
+      line-height: 1.45;
+      text-align:center;
+    }
+
+    footer{
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 14px 14px 16px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(90,16,48,.12);
+      box-shadow: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .footer-title{
+      margin: 0 0 8px;
+      font-family: "Fraunces", serif;
+      font-size: 16px;
+      color: var(--ink2);
+    }
+    .footer-text{
+      margin:0;
+      color: rgba(90,16,48,.78);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 420px){
+      .subtitle{ font-size: 12.5px; }
+      .section-title h2{ font-size: 20px; }
+      .title h3{ font-size: 15.5px; }
+      .time{ font-size: 11.5px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .heart{ display:none; }
+      .card{ transition:none; transform:none; opacity:1; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="header-inner">
+        <div class="logo">
+          <img src="livsval.png" alt="Liv’s Valentine’s Day Schedule logo" />
+        </div>
+
+        <div class="subtitle">
+          A sweet, simple timeline for Valentine’s Day 💗
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="section-title">
+        <h2>Today’s Schedule</h2>
+        <span>Tap and scroll ✨</span>
+      </div>
+
+      <div class="timeline" aria-label="Valentine’s Day schedule">
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Welcome Home Brunch</h3>
+              <div class="time">11:30 AM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21s-7-4.6-9.5-9.1C.4 8 .9 5.7 2.7 4.3c1.8-1.4 4.4-1 6 1 1.6-2 4.2-2.4 6-1C16.5 5.7 17 8 21.5 11.9 19 16.4 12 21 12 21Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Liv’s Home, New Bedford, MA</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Relaxing Thai Massage Therapy</h3>
+              <div class="time">1:00 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 12c2.5-2.5 7.5-2.5 10 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M4 16c4.5-4.5 11.5-4.5 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M8 7c2-2 6-2 8 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Thai Sraan Wellness, 597 Dartmouth St, South Dartmouth, MA 02748</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Wuthering Heights Movie Matinee</h3>
+              <div class="time">3:45 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M8 7v10M16 7v10" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M10 12l4 2.5V9.5L10 12Z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> AMC Dartmouth Mall 11, 140 North Dartmouth Mall, North Dartmouth, MA 02747</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Dinner For 2</h3>
+              <div class="time">7:30 PM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 3v8M12 3v8M16 3v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M7 11h10v10H7z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Saffron By The Sea, 110 Middle St, Fairhaven, MA 02719</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>Two Truths &amp; A Shot Drinking Game</h3>
+              <div class="time">After Dinner</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 3h8l-1 10H9L8 3Z" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M9 13h6v8H9z" stroke="currentColor" stroke-width="1.8" />
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> Liv’s Living Room, New Bedford, MA</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <div class="title">
+              <h3>4TheLuv R&amp;B Party</h3>
+              <div class="time">10:00 PM – 2:00 AM</div>
+            </div>
+            <div class="meta">
+              <div class="row">
+                <div class="ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3v10a3 3 0 1 1-2-2.83V5h8v4h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div><strong>Location:</strong> The Vault Performing Arts Center &amp; Pub, 791 Purchase St, New Bedford, MA 02740</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <p class="hint">Tip: Screenshot this page so you can pull it up instantly later 📸</p>
+      </div>
+
+      <footer>
+        <div class="footer-title">A note for Liv 💌</div>
+        <p class="footer-text">
+          This experience has been curated for the one and only beautiful Livia Fonseca by Abdourahmane Doumbouya
+          to show his appreciation for her and what she means to him.
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    (function hearts(){
+      const root = document.getElementById("hearts");
+      const count = 14;
+      for(let i=0;i<count;i++){
+        const h = document.createElement("div");
+        h.className = "heart";
+        const left = Math.random() * 100;
+        const size = 7 + Math.random() * 10;
+        const dur = 10 + Math.random() * 10;
+        const delay = -Math.random() * dur;
+
+        h.style.left = left + "vw";
+        h.style.width = size + "px";
+        h.style.height = size + "px";
+        h.style.animationDuration = dur + "s";
+        h.style.animationDelay = delay + "s";
+        h.style.opacity = (0.14 + Math.random() * 0.22).toFixed(2);
+
+        root.appendChild(h);
+      }
+    })();
+
+    (function revealCards(){
+      const cards = Array.from(document.querySelectorAll(".card"));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) e.target.classList.add("is-visible");
+        });
+      }, { threshold: 0.12 });
+
+      cards.forEach(c=>io.observe(c));
+    })();
+  </script>
+</body>
+</html>
+
+Change the way the 
+
+
