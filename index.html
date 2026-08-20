@@ -40,7 +40,7 @@
     <footer><div class="volume">Liv's Days · Vol. II</div><a class="archive-link" href="vday.html">← Valentine's Day 2026</a></footer>
   </main>
   <script>
-    const splash=document.getElementById('splash');setTimeout(()=>splash.classList.add('hide'),1450);
+    const splash=document.getElementById('splash');setTimeout(()=>splash.classList.add('hide'),2900);
     document.getElementById('envelope').addEventListener('click',()=>document.getElementById('letter').classList.toggle('open'));
     (function(){const now=new Date(),mins=now.getHours()*60+now.getMinutes(),stops=[...document.querySelectorAll('.stop')];let next=null;for(const stop of stops){const [h,m]=stop.dataset.time.split(':').map(Number);if(h*60+m>=mins){next=stop;break}}if(next)next.classList.add('next')})();
   </script>
