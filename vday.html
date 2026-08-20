@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Liv’s Valentine’s Day Schedule</title>
+  <meta name="description" content="Liv’s Valentine’s Day schedule." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg0:#fff0f5;
+      --bg1:#ffe3ed;
+
+      --ink:#4a0823;
+      --ink2:#7a0c34;
+      --muted: rgba(74,8,35,.70);
+
+      --accent:#b10f3a;
+      --accent2:#e11d48;
+      --line: rgba(74,8,35,.12);
+
+      --r: 22px;
+      --r2: 16px;
+
+      --safeTop: env(safe-area-inset-top);
+      --safeBottom: env(safe-area-inset-bottom);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 560px at 18% 8%, rgba(255,255,255,.70), transparent 60%),
+        radial-gradient(820px 560px at 85% 20%, rgba(255,255,255,.55), transparent 58%),
+        radial-gradient(900px 740px at 50% 110%, rgba(255,79,120,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 60%, #ffeaf1 100%);
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      max-width: 720px;
+      margin: 0 auto;
+      padding: calc(18px + var(--safeTop)) 16px calc(22px + var(--safeBottom));
+      text-align:center;
+    }
+
+    /* Header */
+    .top{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 10px;
+      padding: 14px 14px 16px;
+      border-radius: var(--r);
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(74,8,35,.10);
+    }
+
+    .logo img{
+      width: min(520px, 92vw);
+      height: auto;
+      display:block;
+      object-fit: contain;
+    }
+
+    .date-chip{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 6px;
+      padding: 10px 14px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(74,8,35,.12);
+      color: var(--ink2);
+      font-weight: 800;
+      letter-spacing: .2px;
+      font-size: 12.5px;
+      line-height: 1.1;
+    }
+    .date-chip .line1{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .date-chip .spark{
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, var(--accent2), var(--accent));
+      box-shadow: 0 8px 18px rgba(225,29,72,.20);
+    }
+    .date-chip .helper{
+      font-weight: 700;
+      letter-spacing: .01em;
+      font-size: 12px;
+      color: rgba(74,8,35,.70);
+    }
+
+    /* Section */
+    .section{
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: var(--r);
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(74,8,35,.10);
+    }
+
+    .section h2{
+      margin: 0 0 12px;
+      font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink2);
+    }
+
+    /* NEW: simple list (no dropdowns) */
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .item{
+      border-radius: var(--r2);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.80);
+      padding: 12px;
+      text-align:center;
+    }
+
+    .time{
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: .2px;
+      font-size: 12.5px;
+      margin-bottom: 6px;
+    }
+
+    .name{
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.15;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .addr{
+      display:inline-block;
+      margin-top: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: rgba(74,8,35,.72);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      line-height: 1.25;
+    }
+    .addr:active{ opacity:.75; }
+
+    /* Footer note */
+    .note{
+      margin-top: 16px;
+      padding: 14px 14px 16px;
+      border-radius: var(--r);
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(74,8,35,.10);
+    }
+
+    .note h3{
+      margin:0 0 8px;
+      font-size: 14px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink2);
+    }
+    .note p{
+      margin:0;
+      font-size: 13.5px;
+      color: rgba(74,8,35,.80);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 420px){
+      .name{ font-size: 14.8px; }
+      .time{ font-size: 12.2px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="logo">
+        <img src="livsval.png" alt="Liv’s Valentine’s Day Schedule" />
+      </div>
+
+      <div class="date-chip">
+        <div class="line1">
+          <span class="spark" aria-hidden="true"></span>
+          <span>Valentine’s Day Itinerary</span>
+        </div>
+        <div class="helper">Tap each location for directions</div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Schedule</h2>
+
+      <div class="list" aria-label="Valentine’s Day schedule list">
+        <div class="item">
+          <div class="time">11:30 AM</div>
+          <p class="name">Welcome Home Brunch</p>
+          <a class="addr"
+             href="#"
+             target="_blank" rel="noopener">
+            Liv’s Dinning Room
+          </a>
+        </div>
+
+        <div class="item">
+          <div class="time">1:00 PM</div>
+          <p class="name">Relaxing Thai Massage Therapy</p>
+          <a class="addr" href="https://maps.apple.com/?daddr=Thai+Sraan+Wellness+597+Dartmouth+St+South+Dartmouth+MA+02748"
+            target="_blank" rel="noopener">
+            Thai Sraan Wellness
+          </a>
+        </div>
+
+        <div class="item">
+          <div class="time">3:45 PM</div>
+          <p class="name">Wuthering Heights Movie Matinee</p>
+          <a class="addr" href="https://maps.apple.com/?daddr=AMC+Dartmouth+Mall+11+140+North+Dartmouth+Mall+North+Dartmouth+MA+02747"
+            target="_blank" rel="noopener">
+            AMC Dartmouth Mall 11
+          </a>
+        </div>
+
+        <div class="item">
+          <div class="time">7:30 PM</div>
+          <p class="name">Indian Dinner For 2</p>
+          <a class="addr"
+            href="https://maps.apple.com/?daddr=Saffron+By+The+Sea+110+Middle+St+Fairhaven+MA+02719"
+            target="_blank" rel="noopener">
+            Saffron By The Sea
+          </a>
+        </div>
+
+        <div class="item">
+          <div class="time">10:00 PM – 2:00 AM</div>
+          <p class="name">4TheLuv R&amp;B Party</p>
+          <a class="addr" href="https://maps.apple.com/?daddr=The+Vault+Performing+Arts+Center+%26+Pub+791+Purchase+St+New+Bedford+MA+02740"
+            target="_blank" rel="noopener">
+            The Vault Performing Arts Center &amp; Pub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <h3>A Message For You</h3>
+      <p>
+        Thank you for being the best woman I've ever had the opportunity to experience and spend time with. <br />I truly appreciate you Liv!
+      </p>
+    </section>
+  </div>
+</body>
+</html>
