@@ -6,270 +6,43 @@
   <title>Liv's Day — New Orleans Birthday</title>
   <meta name="description" content="Liv's New Orleans birthday itinerary." />
   <meta name="theme-color" content="#f8d6e2" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet" />
-
   <style>
-    :root {
-      --pink-50: #fff8fb;
-      --pink-100: #fdebf2;
-      --pink-200: #f8d6e2;
-      --pink-300: #efa9bf;
-      --pink-500: #d94a7a;
-      --pink-700: #9f214f;
-      --berry: #68142f;
-      --wine: #4a0b24;
-      --gold: #b88943;
-      --paper: rgba(255,255,255,.76);
-      --line: rgba(104,20,47,.13);
-      --safe-top: env(safe-area-inset-top);
-      --safe-bottom: env(safe-area-inset-bottom);
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--wine);
-      background:
-        radial-gradient(circle at 10% 8%, rgba(255,255,255,.92), transparent 28%),
-        radial-gradient(circle at 88% 18%, rgba(255,255,255,.6), transparent 30%),
-        linear-gradient(180deg, #fff5f9 0%, #f8d6e2 50%, #f3c5d4 100%);
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .35;
-      background-image:
-        radial-gradient(circle at 20% 30%, rgba(184,137,67,.13) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 80% 65%, rgba(159,33,79,.09) 0 1px, transparent 1.5px);
-      background-size: 28px 28px, 34px 34px;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 720px);
-      margin: 0 auto;
-      padding: calc(14px + var(--safe-top)) 14px calc(24px + var(--safe-bottom));
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4px 2px 18px;
-    }
-
-    .hero img {
-      display: block;
-      width: min(100%, 620px);
-      height: auto;
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      margin: 8px 0 4px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    h1 {
-      margin: 0;
-      font-family: "Italiana", serif;
-      font-size: clamp(30px, 9vw, 48px);
-      font-weight: 400;
-      color: var(--berry);
-      line-height: 1;
-    }
-
-    .intro {
-      margin: 10px auto 0;
-      max-width: 480px;
-      color: rgba(74,11,36,.68);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .schedule {
-      display: grid;
-      gap: 10px;
-    }
-
-    .stop {
-      position: relative;
-      overflow: hidden;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px 15px 15px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .stop::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 48px;
-      height: 2px;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: .8;
-    }
-
-    .time {
-      display: inline-block;
-      margin-bottom: 7px;
-      color: var(--pink-700);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    .event {
-      margin: 0;
-      color: var(--berry);
-      font-family: "Italiana", serif;
-      font-size: 23px;
-      font-weight: 400;
-      line-height: 1.08;
-    }
-
-    .venue {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 9px;
-      color: var(--pink-700);
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.35;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(159,33,79,.28);
-      padding-bottom: 2px;
-    }
-
-    .venue::before {
-      content: "⌖";
-      color: var(--gold);
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    .venue:active { opacity: .6; }
-
-    .day-note {
-      margin: 14px auto 4px;
-      text-align: center;
-      font-family: "Italiana", serif;
-      font-size: 19px;
-      color: var(--berry);
-    }
-
-    footer {
-      margin-top: 18px;
-      padding: 13px 8px 4px;
-      text-align: center;
-      color: rgba(74,11,36,.54);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .archive-link {
-      display: inline-block;
-      margin-top: 8px;
-      color: rgba(104,20,47,.48);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(104,20,47,.18);
-      padding-bottom: 1px;
-    }
-
-    .archive-link:hover,
-    .archive-link:focus-visible {
-      color: var(--pink-700);
-    }
-
-    @media (min-width: 640px) {
-      .page { padding-left: 22px; padding-right: 22px; }
-      .stop { padding: 19px 22px 18px; }
-      .event { font-size: 26px; }
-    }
+    :root{--pink0:#fff8fb;--pink1:#fdebf2;--pink2:#f8d6e2;--pink3:#efa9bf;--pink:#d94a7a;--rasp:#9f214f;--berry:#68142f;--wine:#4a0b24;--gold:#b88943;--paper:rgba(255,255,255,.76);--line:rgba(104,20,47,.13);--safe-top:env(safe-area-inset-top);--safe-bottom:env(safe-area-inset-bottom)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;min-height:100vh;font-family:"DM Sans",system-ui,-apple-system,sans-serif;color:var(--wine);background:radial-gradient(circle at 10% 8%,rgba(255,255,255,.95),transparent 28%),radial-gradient(circle at 88% 18%,rgba(255,255,255,.62),transparent 30%),linear-gradient(180deg,#fff5f9 0%,#f8d6e2 50%,#f3c5d4 100%);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(135deg,transparent 45%,rgba(184,137,67,.25) 46%,rgba(184,137,67,.25) 47%,transparent 48%),linear-gradient(45deg,transparent 45%,rgba(159,33,79,.16) 46%,rgba(159,33,79,.16) 47%,transparent 48%);background-size:70px 70px}
+    .splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:24px;text-align:center;background:linear-gradient(180deg,#fff8fb,#f7d5e1);transition:opacity .65s ease,visibility .65s ease}.splash.hide{opacity:0;visibility:hidden}.splash-inner{animation:intro .9s ease both}.splash-small{margin:0 0 10px;color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}.splash h1{margin:0;font-family:"Italiana",serif;font-size:clamp(42px,13vw,68px);font-weight:400;color:var(--berry);line-height:.95}.splash p:last-child{margin:12px 0 0;color:var(--rasp);font-size:14px}@keyframes intro{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    .page{position:relative;z-index:1;width:min(100%,720px);margin:auto;padding:calc(14px + var(--safe-top)) 14px calc(26px + var(--safe-bottom))}.hero{text-align:center;padding:2px 2px 20px}.hero img{display:block;width:min(100%,620px);height:auto;margin:auto}.edition{display:inline-flex;align-items:center;gap:8px;margin:4px 0 7px;color:var(--gold);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}.edition:before,.edition:after{content:"";width:28px;height:1px;background:rgba(184,137,67,.55)}.hero h1{margin:0;font-family:"Italiana",serif;font-size:clamp(31px,9vw,48px);font-weight:400;color:var(--berry);line-height:1}.intro{margin:9px auto 0;max-width:480px;color:rgba(74,11,36,.64);font-size:13px;line-height:1.5}
+    .schedule{display:grid;gap:11px}.stop{position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:17px 15px 16px;text-align:center;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .25s ease,background .25s ease}.stop.next{border-color:rgba(217,74,122,.5);background:rgba(255,250,252,.9)}.stop.next:before{content:"NEXT STOP";position:absolute;top:9px;right:10px;padding:4px 7px;border-radius:999px;background:var(--berry);color:#fff;font-size:8px;font-weight:700;letter-spacing:.13em}.chapter{margin-bottom:4px;color:var(--gold);font-size:9px;font-weight:700;letter-spacing:.23em;text-transform:uppercase}.time-line{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:6px}.clock{font-family:"Italiana",serif;font-size:35px;color:var(--rasp);line-height:1}.ampm{font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--pink)}.event{margin:0;color:var(--berry);font-family:"Italiana",serif;font-size:23px;font-weight:400;line-height:1.08}.place{margin:8px 0 0;color:var(--wine);font-size:13px;font-weight:600}.directions{display:inline-flex;align-items:center;gap:5px;margin-top:5px;color:var(--rasp);font-size:11px;font-weight:700;letter-spacing:.03em;text-decoration:none}.directions:after{content:"↗";color:var(--gold)}.directions:active{opacity:.55}.ornament{display:flex;align-items:center;justify-content:center;gap:9px;height:13px;color:var(--gold);font-size:11px}.ornament:before,.ornament:after{content:"";width:26px;height:1px;background:rgba(184,137,67,.42)}
+    .letter{margin-top:18px;text-align:center}.envelope{appearance:none;border:1px solid rgba(159,33,79,.18);background:rgba(255,255,255,.64);color:var(--berry);border-radius:999px;padding:10px 15px;font:700 11px "DM Sans",sans-serif;letter-spacing:.08em;cursor:pointer}.message{max-height:0;opacity:0;overflow:hidden;transition:max-height .45s ease,opacity .4s ease,margin .4s ease;margin:0 auto;max-width:520px;color:rgba(74,11,36,.75);font-family:"Italiana",serif;font-size:19px;line-height:1.45}.letter.open .message{max-height:220px;opacity:1;margin:13px auto 2px}.letter.open .envelope{background:var(--berry);color:#fff}
+    footer{margin-top:20px;padding:13px 8px 4px;text-align:center;color:rgba(74,11,36,.46);font-size:10px;line-height:1.65}.volume{color:rgba(104,20,47,.55);font-weight:600;letter-spacing:.12em;text-transform:uppercase}.archive-link{display:inline-block;margin-top:5px;color:rgba(104,20,47,.42);text-decoration:none;border-bottom:1px solid rgba(104,20,47,.15)}
+    @media(min-width:640px){.page{padding-left:22px;padding-right:22px}.stop{padding:20px 22px 19px}.event{font-size:26px}}@media(prefers-reduced-motion:reduce){.splash{display:none}.message{transition:none}}
   </style>
 </head>
-
 <body>
+  <div class="splash" id="splash" aria-hidden="true"><div class="splash-inner"><p class="splash-small">New Orleans · Birthday Edition</p><h1>Bonjour,<br>Birthday Girl.</h1><p>Liv, today is yours. ♡</p></div></div>
   <main class="page">
-    <header class="hero">
-      <img src="bday.png" alt="Liv's Day — New Orleans Birthday" />
-      <p class="eyebrow">Birthday Edition</p>
-      <h1>Today in New Orleans</h1>
-      <p class="intro">A little food, a little jazz, a little Bourbon Street energy — all for Liv.</p>
-    </header>
-
+    <header class="hero"><img src="bday.png" alt="Liv's Day — New Orleans Birthday" /><div class="edition">Birthday Edition</div><h1>Today in New Orleans</h1><p class="intro">Food, flowers, jazz and a little late-night New Orleans magic — all for Liv.</p></header>
     <section class="schedule" aria-label="Liv's New Orleans birthday itinerary">
-      <article class="stop">
-        <div class="time">11:00 AM</div>
-        <h2 class="event">Happy “Brunch” Day</h2>
-        <a class="venue" href="https://maps.apple.com/?q=Monday+Restaurant+New+Orleans+LA" target="_blank" rel="noopener">
-          Monday
-        </a>
-      </article>
-
-      <article class="stop">
-        <div class="time">1:00 PM</div>
-        <h2 class="event">“Le Jardin”</h2>
-        <a class="venue" href="https://maps.apple.com/?q=New+Orleans+Botanical+Garden+New+Orleans+LA" target="_blank" rel="noopener">
-          New Orleans Botanical Garden
-        </a>
-      </article>
-
-      <article class="stop">
-        <div class="time">4:00 PM</div>
-        <h2 class="event">Dinner “Pour Deux”</h2>
-        <a class="venue" href="https://maps.apple.com/?q=Morrows+New+Orleans+LA" target="_blank" rel="noopener">
-          Morrow’s
-        </a>
-      </article>
-
-      <article class="stop">
-        <div class="time">6:00 PM</div>
-        <h2 class="event">Evening Jazz Cruise</h2>
-        <a class="venue" href="https://maps.apple.com/?q=Steamboat+Natchez+New+Orleans+LA" target="_blank" rel="noopener">
-          Steamboat Natchez
-        </a>
-      </article>
-
-      <article class="stop">
-        <div class="time">10:30 PM</div>
-        <h2 class="event">“Razzoo Dazzoo”</h2>
-        <a class="venue" href="https://maps.apple.com/?q=Razzoo+Bar+Patio+New+Orleans+LA" target="_blank" rel="noopener">
-          Razzoo Bar &amp; Patio
-        </a>
-      </article>
+      <article class="stop" data-time="11:00"><div class="chapter">Le Matin · ☕</div><div class="time-line"><span class="clock">11:00</span><span class="ampm">AM</span></div><h2 class="event">Happy “Brunch” Day</h2><p class="place">Monday</p><a class="directions" href="https://maps.apple.com/?daddr=Monday+Restaurant+New+Orleans+LA" target="_blank" rel="noopener">Directions</a></article>
+      <div class="ornament">✦</div>
+      <article class="stop" data-time="13:00"><div class="chapter">L'Après-Midi · ❀</div><div class="time-line"><span class="clock">1:00</span><span class="ampm">PM</span></div><h2 class="event">“Le Jardin”</h2><p class="place">New Orleans Botanical Garden</p><a class="directions" href="https://maps.apple.com/?daddr=New+Orleans+Botanical+Garden+New+Orleans+LA" target="_blank" rel="noopener">Directions</a></article>
+      <div class="ornament">⚜</div>
+      <article class="stop" data-time="16:00"><div class="chapter">L'Après-Midi · ♡</div><div class="time-line"><span class="clock">4:00</span><span class="ampm">PM</span></div><h2 class="event">Dinner “Pour Deux”</h2><p class="place">Morrow’s</p><a class="directions" href="https://maps.apple.com/?daddr=Morrows+New+Orleans+LA" target="_blank" rel="noopener">Directions</a></article>
+      <div class="ornament">✦</div>
+      <article class="stop" data-time="18:00"><div class="chapter">Le Soir · ♫</div><div class="time-line"><span class="clock">6:00</span><span class="ampm">PM</span></div><h2 class="event">Evening Jazz Cruise</h2><p class="place">Steamboat Natchez</p><a class="directions" href="https://maps.apple.com/?daddr=Steamboat+Natchez+New+Orleans+LA" target="_blank" rel="noopener">Directions</a></article>
+      <div class="ornament">⚜</div>
+      <article class="stop" data-time="22:30"><div class="chapter">La Nuit · ✧</div><div class="time-line"><span class="clock">10:30</span><span class="ampm">PM</span></div><h2 class="event">“Razzoo Dazzoo”</h2><p class="place">Razzoo Bar &amp; Patio</p><a class="directions" href="https://maps.apple.com/?daddr=Razzoo+Bar+Patio+New+Orleans+LA" target="_blank" rel="noopener">Directions</a></article>
     </section>
-
-    <p class="day-note">Happy Birthday, Liv ♡</p>
-
-    <footer>
-      Curated for one very special New Orleans birthday.
-      <br />
-      <a class="archive-link" href="vday.html">Valentine’s Day archive</a>
-    </footer>
+    <section class="letter" id="letter"><button class="envelope" id="envelope" type="button">For Liv ♡</button><p class="message">Happy Birthday, Liv. I hope today feels as special, beautiful and unforgettable as you are. Here’s to another memory together — this time, in New Orleans. ♡</p></section>
+    <footer><div class="volume">Liv's Days · Vol. II</div><a class="archive-link" href="vday.html">← Valentine's Day 2026</a></footer>
   </main>
+  <script>
+    const splash=document.getElementById('splash');setTimeout(()=>splash.classList.add('hide'),1450);
+    document.getElementById('envelope').addEventListener('click',()=>document.getElementById('letter').classList.toggle('open'));
+    (function(){const now=new Date(),mins=now.getHours()*60+now.getMinutes(),stops=[...document.querySelectorAll('.stop')];let next=null;for(const stop of stops){const [h,m]=stop.dataset.time.split(':').map(Number);if(h*60+m>=mins){next=stop;break}}if(next)next.classList.add('next')})();
+  </script>
 </body>
 </html>
